@@ -1,0 +1,146 @@
+@import '../shared/styles/base.scss';
+@import '../shared/styles/fonts.scss';
+@import '../shared/styles/_variables.scss';
+@import '../shared/styles/_buttons.scss';
+@import '../shared/styles/_inputs.scss';
+
+.header {
+    background-color: $background_header;
+    font-family: $font;
+    color: $text_light;
+
+    &__wrapper {
+        max-width: 1280px;
+        height: 60px;
+        margin: 0 auto;
+        padding: 0 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__h1 {
+        font-size: 1.6rem;
+        font-weight: normal;
+    }
+}
+
+.login {
+    &__user {
+        display: inline-block;
+        height: 40px;
+        padding: 0.5rem 0.75rem;
+        background-color: $yellow;
+        color: $text_dark;
+        cursor: default;
+    }
+}
+
+.main {
+    font-family: $font;
+    color: $text_dark;
+}
+
+.section {
+    max-width: 1280px;
+    padding: 0px 85px;
+    margin: 0 auto;
+}
+
+.post {
+    min-height: 150px;
+    margin-top: 8px;
+    padding: 20px;
+    border: 1px solid $border_gray;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+    &__right {
+        width: 120px;
+        min-width: 120px;
+        padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    &__h2 {
+        font-size: 1.2rem;
+    }
+    &__author {
+        margin-top: 5px;
+        color: $text_placeholder;
+        font-size: 0.9rem;
+    }
+    &__text {
+        margin-top: 8px;
+        text-align: justify;
+    }
+    &__data {
+        color: $text_data;
+        font-size: 0.8rem;
+        &::before {
+            content: '\e94e';
+            font-family: 'icomoon';
+        }
+    }
+}
+
+.modal__container {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal {
+    width: 500px;
+    margin: 30px auto;
+    background-color: $background_main;
+    border: 1px solid $border_gray;
+    border-radius: 0.25rem;
+    animation: move_modal 0.7s;
+    &__header {
+        height: 60px;
+        padding: 1rem;
+        border-bottom: 1px solid $border_gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__main {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+    &__row {
+        display: flex;
+        flex-direction: column;
+    }
+    &__footer {
+        height: 70px;
+        padding: 1rem;
+        border-top: 1px solid $border_gray;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        column-gap: 10px;
+    }
+    &__warning {
+        padding-left: 10px;
+        font-size: 0.8rem;
+        color: $red;
+    }
+}
+
+@keyframes move_modal {
+    0% {
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: 30px;
+    }
+}

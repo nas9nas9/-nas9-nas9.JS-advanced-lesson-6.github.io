@@ -1,0 +1,130 @@
+<header class="header">
+  <div class="header__wrapper">
+      <h1 class="header__h1">Angular blog</h1>
+      <div class="login">
+          <ng-container *ngIf="!userName; else elseTemplate">
+              <button class="btn btn_greenTransparent btn_left" (click)="showSignIn()">
+                  Sign In
+              </button>
+              <button class="btn btn_blueTransparent btn_right" (click)="showSignUp()">
+                  Sign Up
+              </button>
+          </ng-container>
+          <ng-template #elseTemplate>
+              <button class="btn btn_greenTransparent btn_left" (click)="showAddPost()">
+                  Add Post
+              </button>
+              <span class="login__user">{{ userName }}</span>
+              <button class="btn btn_yellowTransparent btn_right" (click)="signOut()">
+                  Sign Out
+              </button>
+          </ng-template>
+      </div>
+  </div>
+</header>
+
+<main class="main">
+  <section class="section">
+      <article class="post" *ngFor="let blog of blogs; index as i">
+          <div>
+              <h2 class="post__h2">{{ blog.topic }}</h2>
+              <p class="post__author">Posted by: {{ blog.postedBy }}</p>
+              <p class="post__text">{{ blog.message }}</p>
+          </div>
+          <div class="post__right">
+              <p class="post__data"> {{ blog.date | date:'HH:mm, dd.MM.yyyy' }}</p>
+              <div *ngIf="userName === blog.postedBy || userName === 'admin'">
+                  <button class="btn btn_yellow btn_left btn_small" (click)="showEditPost(i)">
+                      Edit
+                  </button>
+                  <button class="btn btn_red btn_right btn_small" (click)="deletePost(i)">
+                      Delete
+                  </button>
+              </div>
+          </div>
+      </article>
+  </section>
+
+  <div class="modal__container" *ngIf="modal.modal">
+      <div class="modal" *ngIf="modal.signIn || modal.signUp">
+          <div class="modal__header">
+              <h3 *ngIf="modal.signIn">Sign In</h3>
+              <h3 *ngIf="modal.signUp">Sign Up</h3>
+              <button class="btnClose" (click)="closeModal()">
+              </button>
+          </div>
+          <div class="modal__main">
+              <div class="modal__row" *ngIf="modal.signUp">
+                  <label for="name" class="label">Username:
+                      <span class="modal__warning" *ngIf="modalWarning.name">
+                          this name is already taken
+                      </span>
+                  </label>
+                  <input type="text" class="input" id="name" name="name" [(ngModel)]="currentUser.name"
+                      [ngClass]="{'input_wrong': inputWrong.name}">
+              </div>
+              <div class="modal__row">
+                  <label for="email" class="label">Email:
+                      <span class="modal__warning" *ngIf="modalWarning.email">
+                          this email is already taken
+                      </span>
+                  </label>
+                  <input type="text" class="input" id="email" name="email" [(ngModel)]="currentUser.email"
+                      [ngClass]="{'input_wrong': inputWrong.email}">
+              </div>
+              <div class="modal__row">
+                  <label for="password" class="label">Password:
+                      <span class="modal__warning" *ngIf="modalWarning.password">
+                          incorrect login or password
+                      </span>
+                  </label>
+                  <input type="password" class="input" id="password" name="password"
+                      [(ngModel)]="currentUser.password" [ngClass]="{'input_wrong': inputWrong.password}">
+              </div>
+          </div>
+          <div class="modal__footer">
+              <button class="btn btn_gray" (click)="closeModal()">
+                  Close
+              </button>
+              <button class="btn btn_green" *ngIf="modal.signIn" (click)="signIn()">
+                  Submit
+              </button>
+              <button class="btn btn_blue" *ngIf="modal.signUp" (click)="signUp()">
+                  Submit
+              </button>
+          </div>
+      </div>
+
+      <div class="modal" *ngIf="modal.addPost || modal.editPost">
+          <div class="modal__header">
+              <h3 *ngIf="modal.addPost">Add post</h3>
+              <h3 *ngIf="modal.editPost">Edit post</h3>
+              <button class="btnClose" (click)="closeModal()">
+              </button>
+          </div>
+          <div class="modal__main">
+              <div class="modal__row">
+                  <label for="topic" class="label">Title:</label>
+                  <input type="text" class="input" id="topic" name="topic" [(ngModel)]="currentPost.topic"
+                      [ngClass]="{'input_wrong': inputWrong.topic}">
+              </div>
+              <div class="modal__row">
+                  <label for="message" class="label">Text:</label>
+                  <textarea name="message" id="message" class="input input_area" [(ngModel)]="currentPost.message"
+                      [ngClass]="{'input_wrong': inputWrong.message}"></textarea>
+              </div>
+          </div>
+          <div class="modal__footer">
+              <button class="btn btn_gray" (click)="closeModal()">
+                  Close
+              </button>
+              <button class="btn btn_green" *ngIf="modal.addPost" (click)="addPost()">
+                  Post
+              </button>
+              <button class="btn btn_green" *ngIf="modal.editPost" (click)="editPost()">
+                  Edit post
+              </button>
+          </div>
+      </div>
+  </div>
+</main>

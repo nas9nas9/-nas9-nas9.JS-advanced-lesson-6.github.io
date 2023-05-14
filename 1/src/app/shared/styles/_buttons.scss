@@ -1,0 +1,124 @@
+.btn {
+  height: 40px;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  &_greenTransparent {
+      background-color: transparent;
+      border: 1px solid $green;
+      color: $green;
+      &:hover {
+          background-color: $green;
+          color: $text_light;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $green_focus;
+      }
+  }
+  &_blueTransparent {
+      background-color: transparent;
+      border: 1px solid $blue;
+      color: $blue;
+      &:hover {
+          background-color: $blue;
+          color: $text_light;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $blue_focus;
+      }
+  }
+  &_yellowTransparent {
+      background-color: transparent;
+      border: 1px solid $yellow;
+      color: $yellow;
+      &:hover {
+          background-color: $yellow;
+          color: $text_dark;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $yellow_focus;
+      }
+  }
+  &_blue {
+      background-color: $blue;
+      color: $text_light;
+      &:hover {
+          background-color: $blue_hover;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $blue_focus;
+      }
+  }
+  &_gray {
+      background-color: $gray;
+      color: $text_light;
+      &:hover {
+          background-color: $gray_hover;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $gray_focus;
+      }
+  }
+  &_green {
+      background-color: $green;
+      color: $text_light;
+      &:hover {
+          background-color: $green_hover;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $green_focus;
+      }
+  }
+  &_red {
+      background-color: $red;
+      color: $text_light;
+      &:hover {
+          background-color: $red_hover;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $red_focus;
+      }
+  }
+  &_yellow {
+      background-color: $yellow;
+      color: $text_dark;
+      &:hover {
+          background-color: $yellow_hover;
+      }
+      &:focus {
+          box-shadow: 0 0 0 0.25em $yellow_focus;
+      }
+  }
+  &_left {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  &_right {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+  }
+  &_small {
+      height: 35px;
+      font-size: 0.8rem;
+  }
+}
+
+.btnClose {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: none;
+  &:focus {
+      outline: 0.25rem solid $blue_focus;
+  }
+  &::before {
+      content: '\ea0f';
+      font-family: 'icomoon';
+      font-size: 0.75em;
+      color: $close_gray;
+  }
+}
